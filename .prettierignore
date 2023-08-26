@@ -5,3 +5,4 @@ cdk.out/
 build/
 cdk.context.json
 
+pnpm-lock.yaml
