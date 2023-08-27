@@ -1,5 +1,5 @@
 {
-  "app": "npx ts-node --prefer-ts-exts bin/wearables.ts",
+  "app": "pnpm exec ts-node --prefer-ts-exts bin/wearables.ts",
   "watch": {
     "include": ["**"],
     "exclude": [
@@ -9,6 +9,7 @@
       "**/*.js",
       "tsconfig.json",
       "package*.json",
+      "pnpm-lock.yaml",
       "yarn.lock",
       "node_modules",
       "test"
