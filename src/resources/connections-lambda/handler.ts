@@ -34,7 +34,7 @@ export const handler: APIGatewayProxyHandlerV2WithLambdaAuthorizer<
     authData.scope?.split(' ').includes('trainer')
   ) {
     const tcResponse = await fetch(
-      new URL(`https://api-staging.truecoach.co/api/clients/${clientId}`),
+      new URL(`https://${process.env.TC_API_DOMAIN}/api/clients/${clientId}`),
       {
         method: 'GET',
         headers: {

@@ -22,6 +22,7 @@ import * as dynamodb from 'aws-cdk-lib/aws-dynamodb';
 interface WearablesStackProps extends StackProps {
   readonly target: 'production' | 'staging';
   readonly apiGatewayDomain: string;
+  readonly truecoachApiDomain: string;
 }
 
 export class WearablesStack extends cdk.Stack {
@@ -125,10 +126,10 @@ export class WearablesStack extends cdk.Stack {
 
     terraCredentialsSecret.grantRead(connectWidgetSessionFn);
 
-    const graphsTokenFn = new NodejsFunction(this, `GraphsTokenLambda`, {
+    const connectionsFn = new NodejsFunction(this, `ConnectionsLambda`, {
       entry: path.join(
         __dirname,
-        '../src/resources/graphs-token-lambda/handler.ts'
+        '../src/resources/connections-lambda/handler.ts'
       ),
       runtime: lambda.Runtime.NODEJS_18_X,
       memorySize: 128,
@@ -144,11 +145,12 @@ export class WearablesStack extends cdk.Stack {
       environment: {
         TERRA_CREDENTIALS_SECRET: terraCredentialsSecret.secretArn,
         USER_TABLE: userTable.tableName,
+        TC_API_DOMAIN: props.truecoachApiDomain,
       },
     });
 
-    terraCredentialsSecret.grantRead(graphsTokenFn);
-    userTable.grantReadData(graphsTokenFn);
+    terraCredentialsSecret.grantRead(connectionsFn);
+    userTable.grantReadData(connectionsFn);
 
     const oauthAuthorizerFn = new NodejsFunction(
       this,
@@ -172,6 +174,7 @@ export class WearablesStack extends cdk.Stack {
         environment: {
           TRUECOACH_CLIENT_CREDENTIALS_SECRET:
             truecoachClientCredentialsSecret.secretArn,
+          TC_API_DOMAIN: props.truecoachApiDomain,
         },
       }
     );
@@ -228,7 +231,6 @@ export class WearablesStack extends cdk.Stack {
     });
 
     userTable.grantReadWriteData(terraAuthFn);
-
     // end lambda
 
     // eventbridge
@@ -313,15 +315,15 @@ export class WearablesStack extends cdk.Stack {
       authorizer: new apigwv2.HttpNoneAuthorizer(),
     });
 
-    const graphsTokenIntegration = new HttpLambdaIntegration(
-      'GraphsTokenIntegration',
-      graphsTokenFn
+    const connectionsIntegration = new HttpLambdaIntegration(
+      'ConnectionsIntegration',
+      connectionsFn
     );
 
     api.addRoutes({
-      integration: graphsTokenIntegration,
+      integration: connectionsIntegration,
       methods: [apigwv2.HttpMethod.GET],
-      path: '/api/v1/graphs/token',
+      path: '/api/v1/connections',
     });
     // end api gateway
   }

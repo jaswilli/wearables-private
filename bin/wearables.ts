@@ -16,6 +16,7 @@ new WearablesStack(app, 'WearablesStack-staging', {
   },
   target: 'staging',
   apiGatewayDomain: 'wearables.staging.truecoach.co',
+  truecoachApiDomain: 'api-staging.truecoach.co',
 });
 
 new WearablesStack(app, 'WearablesStack-production', {
@@ -26,4 +27,5 @@ new WearablesStack(app, 'WearablesStack-production', {
   target: 'production',
   terminationProtection: true,
   apiGatewayDomain: 'wearables.truecoach.co',
+  truecoachApiDomain: 'api.truecoach.co',
 });

@@ -39,7 +39,7 @@ export const handler: APIGatewayRequestSimpleAuthorizerHandlerV2WithContext<
   const accessToken = event.identitySource[0].slice(7);
 
   const response = await fetch(
-    `https://api-staging.truecoach.co/api/oauth/token/introspect`,
+    `https://${process.env.TC_API_DOMAIN}/api/oauth/token/introspect`,
     {
       method: 'POST',
       headers: {
