@@ -41,6 +41,12 @@ async function handleSuccess(detail: AuthSuccess): Promise<void> {
           TerraUserId: {
             S: detail.user.user_id,
           },
+          Provider: {
+            S: detail.user.provider,
+          },
+          CreatedAt: {
+            S: new Date().toISOString(),
+          },
         },
       })
     );

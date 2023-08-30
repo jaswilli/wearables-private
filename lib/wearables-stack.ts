@@ -87,12 +87,17 @@ export class WearablesStack extends cdk.Stack {
 
     // dynamodb
     const userTable = new dynamodb.Table(this, 'User', {
+      billingMode: dynamodb.BillingMode.PAY_PER_REQUEST,
       partitionKey: {
         name: 'TrueCoachClientId',
         type: dynamodb.AttributeType.STRING,
       },
+      sortKey: {
+        name: 'TerraUserId',
+        type: dynamodb.AttributeType.STRING,
+      },
     });
-    //end dynamodb
+    // end dynamodb
 
     // lambda
     const paramsAndSecrets = lambda.ParamsAndSecretsLayerVersion.fromVersion(
@@ -283,6 +288,7 @@ export class WearablesStack extends cdk.Stack {
           'X-Amz-Date',
           'Authorization',
           'X-Api-Key',
+          'X-Amz-Security-Token',
         ],
       },
       createDefaultStage: true,

@@ -65,6 +65,9 @@ export const handler: APIGatewayProxyHandlerV2 = async (
           code: err.code,
           message: err.message,
         }),
+        headers: {
+          'Content-Type': 'application/json',
+        },
       };
     }
 
@@ -95,6 +98,9 @@ export const handler: APIGatewayProxyHandlerV2 = async (
 
     const response: APIGatewayProxyResultV2 = {
       statusCode: 500,
+      headers: {
+        'Content-Type': 'application/json',
+      },
     };
 
     if (err instanceof Error) {

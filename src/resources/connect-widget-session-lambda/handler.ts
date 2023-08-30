@@ -28,7 +28,12 @@ export const handler: APIGatewayProxyHandlerV2WithLambdaAuthorizer<
     secretPayload.SecretString!
   ) as TerraCredentialsSecret;
 
-  const requestBody = JSON.parse(event.body!);
+  let requestBody;
+  try {
+    requestBody = JSON.parse(event.body!);
+  } catch {
+    /* empty */
+  }
 
   const response = await fetch(`${terraApiUrl}/auth/generateWidgetSession`, {
     method: 'POST',
@@ -40,8 +45,8 @@ export const handler: APIGatewayProxyHandlerV2WithLambdaAuthorizer<
     },
     body: JSON.stringify({
       reference_id: authData.user_client_id,
-      auth_success_redirect_url: requestBody.success_redirect_url,
-      auth_failure_redirect_url: requestBody.failure_redirect_url,
+      auth_success_redirect_url: requestBody?.success_redirect_url,
+      auth_failure_redirect_url: requestBody?.failure_redirect_url,
       language: 'en',
       show_disconnect: true,
       use_terra_avengers_app: false,
@@ -57,6 +62,14 @@ export const handler: APIGatewayProxyHandlerV2WithLambdaAuthorizer<
 
     return {
       statusCode: 200,
+      headers: {
+        'Content-Type': 'application/json',
+        'Access-Control-Allow-Origin': '*',
+        'Access-Control-Allow-Headers':
+          'Content-Type,Authorization,X-Amz-Date,X-Api-Key,X-Amz-Security-Token',
+        'Access-Control-Allow-Methods': 'OPTIONS,POST',
+        'Access-Control-Allow-Credentials': true,
+      },
       body: JSON.stringify({
         data: {
           url: responseJSON.url,
