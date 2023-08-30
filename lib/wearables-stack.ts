@@ -236,6 +236,29 @@ export class WearablesStack extends cdk.Stack {
     });
 
     userTable.grantReadWriteData(terraAuthFn);
+
+    const terraDeauthFn = new NodejsFunction(this, 'TerraDeauthLambda', {
+      entry: path.join(
+        __dirname,
+        '../src/resources/terra-event-handlers/terra-deauth-lambda/handler.ts'
+      ),
+      runtime: lambda.Runtime.NODEJS_18_X,
+      memorySize: 128,
+      timeout: Duration.seconds(10),
+      logRetention: RetentionDays.ONE_MONTH,
+      bundling: {
+        forceDockerBundling: true,
+        minify: true,
+        sourceMap: true,
+        charset: Charset.UTF8,
+      },
+      paramsAndSecrets,
+      environment: {
+        USER_TABLE: userTable.tableName,
+      },
+    });
+
+    userTable.grantReadWriteData(terraDeauthFn);
     // end lambda
 
     // eventbridge
@@ -257,15 +280,39 @@ export class WearablesStack extends cdk.Stack {
       },
     });
 
-    const logGroup = new LogGroup(this, 'TerraAuthEventLogGroup', {
+    const terraAuthLogGroup = new LogGroup(this, 'TerraAuthEventLogGroup', {
       logGroupName: `/aws/events/WearablesApi-${props.target}-terra-auth`,
     });
 
     terraAuthrule.addTarget(
-      new eventbridgeTargets.CloudWatchLogGroup(logGroup)
+      new eventbridgeTargets.CloudWatchLogGroup(terraAuthLogGroup)
     );
 
     terraAuthrule.addTarget(new eventbridgeTargets.LambdaFunction(terraAuthFn));
+
+    const terraDeauthrule = new eventbridge.Rule(this, 'TerraDeauth', {
+      eventBus,
+      description: 'Terra Deauth',
+      eventPattern: {
+        source: [`WearablesApi-${props.target}`],
+        detailType: ['TerraWebhook'],
+        detail: {
+          type: ['deauth'],
+        },
+      },
+    });
+
+    const terraDeauthLogGroup = new LogGroup(this, 'TerraDeauthEventLogGroup', {
+      logGroupName: `/aws/events/WearablesApi-${props.target}-terra-deauth`,
+    });
+
+    terraDeauthrule.addTarget(
+      new eventbridgeTargets.CloudWatchLogGroup(terraDeauthLogGroup)
+    );
+
+    terraDeauthrule.addTarget(
+      new eventbridgeTargets.LambdaFunction(terraDeauthFn)
+    );
     // end eventbridge
 
     // api gateway
