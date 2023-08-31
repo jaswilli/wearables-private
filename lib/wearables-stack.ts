@@ -337,6 +337,7 @@ export class WearablesStack extends cdk.Stack {
           'X-Api-Key',
           'X-Amz-Security-Token',
         ],
+        maxAge: Duration.minutes(10),
       },
       createDefaultStage: true,
       defaultDomainMapping: {
