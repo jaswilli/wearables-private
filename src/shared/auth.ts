@@ -1,5 +1,10 @@
 import { createHmac, timingSafeEqual } from 'node:crypto';
 
+export interface TerraCredentialsSecret {
+  devId: string;
+  apiKey: string;
+}
+
 export interface GetSecretResult {
   ARN: string;
   CreatedDate: string;

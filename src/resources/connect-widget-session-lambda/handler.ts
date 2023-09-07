@@ -4,12 +4,7 @@ import {
   APIGatewayProxyResultV2,
 } from 'aws-lambda';
 import { AuthorizerContext } from '../oauth-authorizer-lambda/handler';
-import { getSecret } from '../../shared/auth';
-
-interface TerraCredentialsSecret {
-  devId: string;
-  apiKey: string;
-}
+import { getSecret, TerraCredentialsSecret } from '../../shared/auth';
 
 const TERRA_CREDENTIALS_SECRET = process.env.TERRA_CREDENTIALS_SECRET!;
 

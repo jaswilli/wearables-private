@@ -5,12 +5,7 @@ import {
 } from 'aws-lambda';
 import { DynamoDBClient, QueryCommand } from '@aws-sdk/client-dynamodb';
 import { AuthorizerContext } from '../oauth-authorizer-lambda/handler';
-import { getSecret } from '../../shared/auth';
-
-interface TerraCredentialsSecret {
-  devId: string;
-  apiKey: string;
-}
+import { getSecret, TerraCredentialsSecret } from '../../shared/auth';
 
 interface TerraGraphsTokenResponse {
   token: string;
