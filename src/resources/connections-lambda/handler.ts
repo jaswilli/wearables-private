@@ -150,7 +150,11 @@ export const handler: APIGatewayProxyHandlerV2WithLambdaAuthorizer<
   });
 
   console.log(`debug: ${JSON.stringify(result)}`);
-  console.log(`debug: terra user_id: ${JSON.stringify(items[0].TerraUserId)}`);
+  if (result.Count) {
+    console.log(
+      `debug: terra user_id: ${JSON.stringify(items[0].TerraUserId)}`
+    );
+  }
 
   const connections: Array<Connection> = [];
   const includeGraphsToken = event.queryStringParameters?.include
