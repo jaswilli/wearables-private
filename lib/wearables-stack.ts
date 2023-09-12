@@ -131,6 +131,36 @@ export class WearablesStack extends cdk.Stack {
 
     terraCredentialsSecret.grantRead(connectWidgetSessionFn);
 
+    const connectDeauthenticateFn = new NodejsFunction(
+      this,
+      `ConnectDeauthenticateLambda`,
+      {
+        entry: path.join(
+          __dirname,
+          '../src/resources/connect-deauthenticate-lambda/handler.ts'
+        ),
+        runtime: lambda.Runtime.NODEJS_18_X,
+        memorySize: 128,
+        timeout: Duration.seconds(10),
+        logRetention: RetentionDays.ONE_MONTH,
+        bundling: {
+          forceDockerBundling: true,
+          minify: true,
+          sourceMap: true,
+          charset: Charset.UTF8,
+        },
+        paramsAndSecrets,
+        environment: {
+          TERRA_CREDENTIALS_SECRET: terraCredentialsSecret.secretArn,
+          USER_TABLE: userTable.tableName,
+          TC_API_DOMAIN: props.truecoachApiDomain,
+        },
+      }
+    );
+
+    terraCredentialsSecret.grantRead(connectDeauthenticateFn);
+    userTable.grantReadWriteData(connectDeauthenticateFn);
+
     const connectionsFn = new NodejsFunction(this, `ConnectionsLambda`, {
       entry: path.join(
         __dirname,
@@ -361,6 +391,17 @@ export class WearablesStack extends cdk.Stack {
       'TerraWebhookIntegration',
       terraWebhookRequestHandlerFn
     );
+
+    const connectDeauthenticateIntegration = new HttpLambdaIntegration(
+      'ConnectDeauthenticateIntegration',
+      connectDeauthenticateFn
+    );
+
+    api.addRoutes({
+      integration: connectDeauthenticateIntegration,
+      methods: [apigwv2.HttpMethod.DELETE],
+      path: '/api/v1/connect/deauthenticate',
+    });
 
     api.addRoutes({
       integration: terraWebhookIntegration,
