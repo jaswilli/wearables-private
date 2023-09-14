@@ -113,7 +113,7 @@ export class WearablesStack extends cdk.Stack {
           '../src/resources/connect-widget-session-lambda/handler.ts'
         ),
         runtime: lambda.Runtime.NODEJS_18_X,
-        memorySize: 128,
+        memorySize: 256,
         timeout: Duration.seconds(10),
         logRetention: RetentionDays.ONE_MONTH,
         bundling: {
@@ -140,7 +140,7 @@ export class WearablesStack extends cdk.Stack {
           '../src/resources/connect-deauthenticate-lambda/handler.ts'
         ),
         runtime: lambda.Runtime.NODEJS_18_X,
-        memorySize: 128,
+        memorySize: 256,
         timeout: Duration.seconds(10),
         logRetention: RetentionDays.ONE_MONTH,
         bundling: {
@@ -167,7 +167,7 @@ export class WearablesStack extends cdk.Stack {
         '../src/resources/connections-lambda/handler.ts'
       ),
       runtime: lambda.Runtime.NODEJS_18_X,
-      memorySize: 128,
+      memorySize: 256,
       timeout: Duration.seconds(10),
       logRetention: RetentionDays.ONE_MONTH,
       bundling: {
@@ -196,7 +196,7 @@ export class WearablesStack extends cdk.Stack {
           '../src/resources/oauth-authorizer-lambda/handler.ts'
         ),
         runtime: lambda.Runtime.NODEJS_18_X,
-        memorySize: 128,
+        memorySize: 256,
         timeout: Duration.seconds(10),
         logRetention: RetentionDays.ONE_MONTH,
         bundling: {
@@ -225,7 +225,7 @@ export class WearablesStack extends cdk.Stack {
           '../src/resources/terra-webhook-request-handler-lambda/handler.ts'
         ),
         runtime: lambda.Runtime.NODEJS_18_X,
-        memorySize: 128,
+        memorySize: 256,
         timeout: Duration.seconds(10),
         logRetention: RetentionDays.ONE_MONTH,
         bundling: {
@@ -250,7 +250,7 @@ export class WearablesStack extends cdk.Stack {
         '../src/resources/terra-event-handlers/terra-auth-lambda/handler.ts'
       ),
       runtime: lambda.Runtime.NODEJS_18_X,
-      memorySize: 128,
+      memorySize: 256,
       timeout: Duration.seconds(10),
       logRetention: RetentionDays.ONE_MONTH,
       bundling: {
@@ -273,7 +273,7 @@ export class WearablesStack extends cdk.Stack {
         '../src/resources/terra-event-handlers/terra-deauth-lambda/handler.ts'
       ),
       runtime: lambda.Runtime.NODEJS_18_X,
-      memorySize: 128,
+      memorySize: 256,
       timeout: Duration.seconds(10),
       logRetention: RetentionDays.ONE_MONTH,
       bundling: {
