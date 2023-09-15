@@ -28,7 +28,7 @@ interface AuthError {
 }
 
 async function handleSuccess(detail: AuthSuccess): Promise<void> {
-  console.log(`debug: ${detail}`);
+  console.log(`debug: ${JSON.stringify(detail)}`);
 
   try {
     await dbClient.send(
