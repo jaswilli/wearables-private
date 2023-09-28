@@ -351,7 +351,7 @@ export class WearablesStack extends cdk.Stack {
       oauthAuthorizerFn,
       {
         responseTypes: [HttpLambdaResponseType.SIMPLE],
-        resultsCacheTtl: Duration.seconds(0),
+        resultsCacheTtl: Duration.seconds(120),
       }
     );
 
