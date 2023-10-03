@@ -61,7 +61,7 @@ export const handler: APIGatewayProxyHandlerV2WithLambdaAuthorizer<
         method: 'GET',
         headers: {
           role: 'Trainer',
-          Authorization: `Bearer ${event.headers.authorization}`,
+          Authorization: `Bearer ${event.headers.authorization?.slice(7)}`,
         },
       }
     );
