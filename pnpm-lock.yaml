@@ -6,14 +6,14 @@ settings:
 
 dependencies:
   '@aws-cdk/aws-apigatewayv2-alpha':
-    specifier: 2.100.0-alpha.0
-    version: 2.100.0-alpha.0(aws-cdk-lib@2.100.0)(constructs@10.3.0)
+    specifier: 2.101.0-alpha.0
+    version: 2.101.0-alpha.0(aws-cdk-lib@2.101.0)(constructs@10.3.0)
   '@aws-cdk/aws-apigatewayv2-authorizers-alpha':
-    specifier: 2.100.0-alpha.0
-    version: 2.100.0-alpha.0(@aws-cdk/aws-apigatewayv2-alpha@2.100.0-alpha.0)(aws-cdk-lib@2.100.0)(constructs@10.3.0)
+    specifier: 2.101.0-alpha.0
+    version: 2.101.0-alpha.0(@aws-cdk/aws-apigatewayv2-alpha@2.101.0-alpha.0)(aws-cdk-lib@2.101.0)(constructs@10.3.0)
   '@aws-cdk/aws-apigatewayv2-integrations-alpha':
-    specifier: 2.100.0-alpha.0
-    version: 2.100.0-alpha.0(@aws-cdk/aws-apigatewayv2-alpha@2.100.0-alpha.0)(aws-cdk-lib@2.100.0)(constructs@10.3.0)
+    specifier: 2.101.0-alpha.0
+    version: 2.101.0-alpha.0(@aws-cdk/aws-apigatewayv2-alpha@2.101.0-alpha.0)(aws-cdk-lib@2.101.0)(constructs@10.3.0)
   '@aws-sdk/client-dynamodb':
     specifier: ^3.428.0
     version: 3.428.0
@@ -21,8 +21,8 @@ dependencies:
     specifier: ^3.428.0
     version: 3.428.0
   aws-cdk-lib:
-    specifier: 2.100.0
-    version: 2.100.0(constructs@10.3.0)
+    specifier: 2.101.0
+    version: 2.101.0(constructs@10.3.0)
   constructs:
     specifier: ^10.3.0
     version: 10.3.0
@@ -47,8 +47,8 @@ devDependencies:
     specifier: ^6.7.5
     version: 6.7.5(eslint@8.51.0)(typescript@5.2.2)
   aws-cdk:
-    specifier: 2.100.0
-    version: 2.100.0
+    specifier: 2.101.0
+    version: 2.101.0
   eslint-config-prettier:
     specifier: ^9.0.0
     version: 9.0.0(eslint@8.51.0)
@@ -98,40 +98,40 @@ packages:
     resolution: {integrity: sha512-DDt4SLdLOwWCjGtltH4VCST7hpOI5DzieuhGZsBpZ+AgJdSI2GCjklCXm0GCTwJG/SolkL5dtQXyUKgg9luBDg==}
     dev: false
 
-  /@aws-cdk/aws-apigatewayv2-alpha@2.100.0-alpha.0(aws-cdk-lib@2.100.0)(constructs@10.3.0):
-    resolution: {integrity: sha512-JRnwuwGWLV5uZS9bWR4s+Swm7/JmOoRl2GoKGUqPwMiK76JAPwdFAOZfcNBDsHZgLAKXaO39OwjtWv8BSmln5w==}
+  /@aws-cdk/aws-apigatewayv2-alpha@2.101.0-alpha.0(aws-cdk-lib@2.101.0)(constructs@10.3.0):
+    resolution: {integrity: sha512-4YWebVxC8OjJs4eELbYOpHxzoCHQpnGYvgxTd6QmCqIbExXQagB7gPmc6pMX/ELPHlBiR7l4PTdvlfUoRIS/AQ==}
     engines: {node: '>= 14.15.0'}
     peerDependencies:
-      aws-cdk-lib: ^2.100.0
+      aws-cdk-lib: ^2.101.0
       constructs: ^10.0.0
     dependencies:
-      aws-cdk-lib: 2.100.0(constructs@10.3.0)
+      aws-cdk-lib: 2.101.0(constructs@10.3.0)
       constructs: 10.3.0
     dev: false
 
-  /@aws-cdk/aws-apigatewayv2-authorizers-alpha@2.100.0-alpha.0(@aws-cdk/aws-apigatewayv2-alpha@2.100.0-alpha.0)(aws-cdk-lib@2.100.0)(constructs@10.3.0):
-    resolution: {integrity: sha512-BZp70/U2D5ozF1JSfwS0XCoeU23ywUpqIfYvwmLNd/KTvbO/MQU9iYhNIDugtDTarEGUd96nbzDgZGssPBlJig==}
+  /@aws-cdk/aws-apigatewayv2-authorizers-alpha@2.101.0-alpha.0(@aws-cdk/aws-apigatewayv2-alpha@2.101.0-alpha.0)(aws-cdk-lib@2.101.0)(constructs@10.3.0):
+    resolution: {integrity: sha512-4j1+ks401J8mL7+/HRQm5dk4ipc2Zc3Xi4dpgsX1TEeCKEAaxEL/UJLaJfWnEmeDamYqARdbZ2RBXddBNdK3Eg==}
     engines: {node: '>= 14.15.0'}
     peerDependencies:
-      '@aws-cdk/aws-apigatewayv2-alpha': 2.100.0-alpha.0
-      aws-cdk-lib: ^2.100.0
+      '@aws-cdk/aws-apigatewayv2-alpha': 2.101.0-alpha.0
+      aws-cdk-lib: ^2.101.0
       constructs: ^10.0.0
     dependencies:
-      '@aws-cdk/aws-apigatewayv2-alpha': 2.100.0-alpha.0(aws-cdk-lib@2.100.0)(constructs@10.3.0)
-      aws-cdk-lib: 2.100.0(constructs@10.3.0)
+      '@aws-cdk/aws-apigatewayv2-alpha': 2.101.0-alpha.0(aws-cdk-lib@2.101.0)(constructs@10.3.0)
+      aws-cdk-lib: 2.101.0(constructs@10.3.0)
       constructs: 10.3.0
     dev: false
 
-  /@aws-cdk/aws-apigatewayv2-integrations-alpha@2.100.0-alpha.0(@aws-cdk/aws-apigatewayv2-alpha@2.100.0-alpha.0)(aws-cdk-lib@2.100.0)(constructs@10.3.0):
-    resolution: {integrity: sha512-tQskKtOLv345HGlqY/NHW4ZoNCVhXwwGV/7xKvguglrJKQLgRsNETE+krn9WCgTXwnWY6UNswr1Bw8mHuuoGwg==}
+  /@aws-cdk/aws-apigatewayv2-integrations-alpha@2.101.0-alpha.0(@aws-cdk/aws-apigatewayv2-alpha@2.101.0-alpha.0)(aws-cdk-lib@2.101.0)(constructs@10.3.0):
+    resolution: {integrity: sha512-Qz+Gjn4v6ljG76ViboOgeeisBPFR6b2Kz2Freyl9T9C/Bxbe7gznUO5TL+YSAp703AlbGQggYNyrB1R6f4Dmzw==}
     engines: {node: '>= 14.15.0'}
     peerDependencies:
-      '@aws-cdk/aws-apigatewayv2-alpha': 2.100.0-alpha.0
-      aws-cdk-lib: ^2.100.0
+      '@aws-cdk/aws-apigatewayv2-alpha': 2.101.0-alpha.0
+      aws-cdk-lib: ^2.101.0
       constructs: ^10.0.0
     dependencies:
-      '@aws-cdk/aws-apigatewayv2-alpha': 2.100.0-alpha.0(aws-cdk-lib@2.100.0)(constructs@10.3.0)
-      aws-cdk-lib: 2.100.0(constructs@10.3.0)
+      '@aws-cdk/aws-apigatewayv2-alpha': 2.101.0-alpha.0(aws-cdk-lib@2.101.0)(constructs@10.3.0)
+      aws-cdk-lib: 2.101.0(constructs@10.3.0)
       constructs: 10.3.0
     dev: false
 
@@ -2035,8 +2035,8 @@ packages:
     engines: {node: '>=8'}
     dev: true
 
-  /aws-cdk-lib@2.100.0(constructs@10.3.0):
-    resolution: {integrity: sha512-oWDPcbdqD69wDIUvcGdbDxmKcDfkCg515wf8JkiQLnhAI/AFyKAVTEWhbSUi00lvJQNUjX8Mal2lbKlCRA4hjQ==}
+  /aws-cdk-lib@2.101.0(constructs@10.3.0):
+    resolution: {integrity: sha512-M/KVfpasKNoTFUJ3MG72f58GqzKu834VOYmv7DXw6Kzlf5i7daehAJNmR1NYoA6FhSmM/R8xSJ+5kxZJDB62tA==}
     engines: {node: '>= 14.15.0'}
     peerDependencies:
       constructs: ^10.0.0
@@ -2058,8 +2058,8 @@ packages:
       - table
       - yaml
 
-  /aws-cdk@2.100.0:
-    resolution: {integrity: sha512-Gt/4wPuEiBYw2tl0+cN0EbLxxJEvltcJxSQAcVHgNbqvDj49KUJ/oCbZ335dF0gK/hrVVb70xfNiYbBSPOsmvg==}
+  /aws-cdk@2.101.0:
+    resolution: {integrity: sha512-cPLmHP2HGZVj74o3rvcnTwJ7v3wuy95jZgNN/WUMqNZpf+DTDDkmk968bydb+CBKYwpXzqRWITG0eKRt9L1EZA==}
     engines: {node: '>= 14.15.0'}
     hasBin: true
     optionalDependencies:
@@ -2177,8 +2177,8 @@ packages:
     engines: {node: ^6 || ^7 || ^8 || ^9 || ^10 || ^11 || ^12 || >=13.7}
     hasBin: true
     dependencies:
-      caniuse-lite: 1.0.30001547
-      electron-to-chromium: 1.4.553
+      caniuse-lite: 1.0.30001549
+      electron-to-chromium: 1.4.554
       node-releases: 2.0.13
       update-browserslist-db: 1.0.13(browserslist@4.22.1)
     dev: true
@@ -2221,8 +2221,8 @@ packages:
     engines: {node: '>=10'}
     dev: true
 
-  /caniuse-lite@1.0.30001547:
-    resolution: {integrity: sha512-W7CrtIModMAxobGhz8iXmDfuJiiKg1WADMO/9x7/CLNin5cpSbuBjooyoIUVB5eyCc36QuTVlkVa1iB2S5+/eA==}
+  /caniuse-lite@1.0.30001549:
+    resolution: {integrity: sha512-qRp48dPYSCYaP+KurZLhDYdVE+yEyht/3NlmcJgVQ2VMGt6JL36ndQ/7rgspdZsJuxDPFIo/OzBT2+GmIJ53BA==}
     dev: true
 
   /chalk@2.4.2:
@@ -2422,8 +2422,8 @@ packages:
       esutils: 2.0.3
     dev: true
 
-  /electron-to-chromium@1.4.553:
-    resolution: {integrity: sha512-HiRdtyKS2+VhiXvjhMvvxiMC33FJJqTA5EB2YHgFZW6v7HkK4Q9Ahv2V7O2ZPgAjw+MyCJVMQvigj13H8t+wvA==}
+  /electron-to-chromium@1.4.554:
+    resolution: {integrity: sha512-Q0umzPJjfBrrj8unkONTgbKQXzXRrH7sVV7D9ea2yBV3Oaogz991yhbpfvo2LMNkJItmruXTEzVpP9cp7vaIiQ==}
     dev: true
 
   /emittery@0.13.1:
